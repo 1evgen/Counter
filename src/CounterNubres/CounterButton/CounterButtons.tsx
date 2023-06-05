@@ -2,7 +2,6 @@
 import s from './CounterButtons.module.css'
 
 
-
 type typeForButton = {
     titleButton: string
     changeValue: ()=> void
@@ -20,7 +19,6 @@ type typeForButton = {
                 className={s.styleButtons}
                 disabled={isDisabled}
         >{props.titleButton}</button>
-
 
     )
 }

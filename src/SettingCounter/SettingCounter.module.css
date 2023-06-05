@@ -1,11 +1,8 @@
-
 .wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+
 }
 
-.bodyCounter{
+.bodySettingCounter{
     margin-top: 50px;
     border: 2px solid #6fcbfa;
     width: 360px;
@@ -18,7 +15,11 @@
     gap: 2%;
 }
 
-.windowCounter{
+.windowForValue{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
     border: 2px solid #6fcbfa;
     width: 330px;
     height: 150px;
@@ -28,16 +29,7 @@
 
 }
 
-.number{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-    font-size: 70px;
-}
-
-.spaceForButtons {
+.windowForButton {
     border: 2px solid #6fcbfa;
     width: 330px;
     height: 70px;
@@ -46,8 +38,5 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-}
 
-.maxValue {
-    color: #af0707;
 }

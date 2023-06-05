@@ -16,7 +16,7 @@ export const CounterNumbers = () => {
 
 
     return (
-        <div className={`${s.wrapper} ${s.background}`}>
+        <div className={s.wrapper}>
 
             <div className={s.bodyCounter}>
                 <div className={s.windowCounter}>

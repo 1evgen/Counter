@@ -40,3 +40,12 @@
     align-items: center;
 
 }
+
+.error input {
+    background-color: #ff4a8a;
+    border: 2px solid red;
+}
+
+.disabled{
+
+}

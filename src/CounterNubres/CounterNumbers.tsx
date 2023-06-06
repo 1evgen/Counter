@@ -3,16 +3,17 @@ import s from './CounterNumbers.module.css'
 import {CounterButton} from "./CounterButton/CounterButtons";
 
 
+type typeCounterNumbers = {
+    value: number
+    maxValue: number
+    changeNumberInCounter: ()=> void
+    resetNumberInCounter: ()=> void
 
-export const CounterNumbers = () => {
-    const [value, setValue] = useState(0)
+}
 
-    const changeNumberInCounter = ()=> {
-        if (value < 5) {
-            setValue(value + 1)
-        }
-    }
-    const resetNumberInCounter = ()=> {setValue(0)}
+
+export const CounterNumbers = (props: typeCounterNumbers) => {
+
 
 
     return (
@@ -20,19 +21,24 @@ export const CounterNumbers = () => {
 
             <div className={s.bodyCounter}>
                 <div className={s.windowCounter}>
-                    <div className={`${s.number} ${value === 5 ? s.maxValue : ''}`}>{value}</div>
+                    <div className={`${s.number} ${props.value === props.maxValue ? s.maxValue : ''}`}>{props.value}</div>
                 </div>
 
 
                 <div className={s.spaceForButtons}>
-                    <CounterButton  changeValue={changeNumberInCounter}
+                    <CounterButton  changeValue={props.changeNumberInCounter}
                                     titleButton={'inc'}
-                                    value={value}
+                                    value={props.value}
+                                    maxValue={props.maxValue}
+
                     />
 
-                    <CounterButton changeValue={resetNumberInCounter}
+                    <CounterButton changeValue={props.resetNumberInCounter}
                                    titleButton={'reset'}
-                                   value={value} />
+                                   value={props.value}
+                                   maxValue={props.maxValue}
+
+                    />
                 </div>
 
             </div>

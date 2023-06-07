@@ -10,7 +10,9 @@ function App() {
     const [value, setValue] = useState(0);
     const [startValue, setStartValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
-    const [messageForUser, setMessageForUser]= useState()
+    const [messageForUser, setMessageForUser]= useState(true)
+    const [isActiveSetting, setIsActiveSetting]= useState(false)
+
 
 
 /// Local Storage
@@ -22,6 +24,8 @@ function App() {
         setStartValue(value)
         localStorage.setItem('startValue', JSON.stringify(value))
     }
+
+
     useEffect(()=> {
         let newMaxValue =  localStorage.getItem('maxValue')
         let newStartValue =  localStorage.getItem('startValue')
@@ -33,23 +37,13 @@ function App() {
             }
     },[])
 
-    let messageError ;
-    let messageOk ;
-
-    useEffect(()=>{
-        if (maxValue <= startValue || startValue < 0){
-            console.log("mistake")
-            messageError = false
-        }else{
-            messageOk =true
-            console.log("ok")
-        }
-    }, [maxValue,startValue])
 
     /// change numbers
     const settingValue = () => {
         setValue(startValue)
+        setIsActiveSetting(true)
     };
+
     const changeNumberInCounter = () => {
         if (value < maxValue) {
             setValue(value + 1);
@@ -57,9 +51,18 @@ function App() {
     };
     const resetNumberInCounter = () => { setValue(startValue)};
 //
-    const messageForUsers = {
 
-    }
+    useEffect(()=>{
+        if (maxValue <= startValue || startValue < 0){
+            console.log("mistake")
+            setMessageForUser(false)
+            setIsActiveSetting(false)
+        }else{
+            setMessageForUser(true)
+            setIsActiveSetting(false)
+            console.log("ok")
+        }
+    }, [maxValue,startValue])
 
 
     return (
@@ -70,6 +73,9 @@ function App() {
                 resetNumberInCounter={resetNumberInCounter}
                 maxValue={maxValue}
                 startValue={startValue}
+                messageForUser={messageForUser}
+                setMessageForUser={setMessageForUser}
+                isActiveSetting={isActiveSetting}
             />
             <SettingCounter
                 setStartValue={onSetStartValue}
@@ -77,6 +83,7 @@ function App() {
                 startValue={startValue}
                 maxValue={maxValue}
                 settingValue={settingValue}
+
             />
         </div>
     );

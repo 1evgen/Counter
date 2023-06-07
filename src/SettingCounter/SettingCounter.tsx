@@ -10,6 +10,8 @@ type typeSetting = {
     startValue: number
     maxValue: number
     settingValue: () => void
+
+
 }
 
 
@@ -40,9 +42,9 @@ export const SettingCounter = (props: typeSetting) => {
                 </div>
 
                 <div className={s.windowForButton}>
-                    <CounterButton  titleButton={'set'}
+                    <CounterButton
+                        titleButton={'set'}
                                    changeValue={props.settingValue}
-                                   value={0} //refactor
                                    maxValue={props.maxValue}
                                    startValue={props.startValue}
                     />

@@ -5,7 +5,7 @@ import s from './CounterButtons.module.css'
 type typeForButton = {
     titleButton: string
     changeValue: ()=> void
-    value: number
+    value?: number
     maxValue: number
     startValue: number
 }

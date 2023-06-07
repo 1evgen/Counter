@@ -17,6 +17,8 @@ export const SupperInput = (props: typeForSupperInput) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>)=> {
         props.setValue(Number(e.currentTarget.value))
+
+
     }
 
 

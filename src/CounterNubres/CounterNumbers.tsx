@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import s from './CounterNumbers.module.css'
 import {CounterButton} from "./CounterButton/CounterButtons";
 
@@ -6,14 +6,13 @@ import {CounterButton} from "./CounterButton/CounterButtons";
 type typeCounterNumbers = {
     value: number
     maxValue: number
+    startValue: number
     changeNumberInCounter: ()=> void
     resetNumberInCounter: ()=> void
 
 }
 
-
 export const CounterNumbers = (props: typeCounterNumbers) => {
-
 
 
     return (
@@ -30,6 +29,7 @@ export const CounterNumbers = (props: typeCounterNumbers) => {
                                     titleButton={'inc'}
                                     value={props.value}
                                     maxValue={props.maxValue}
+                                    startValue={props.startValue}
 
                     />
 
@@ -37,7 +37,7 @@ export const CounterNumbers = (props: typeCounterNumbers) => {
                                    titleButton={'reset'}
                                    value={props.value}
                                    maxValue={props.maxValue}
-
+                                   startValue={props.startValue}
                     />
                 </div>
 

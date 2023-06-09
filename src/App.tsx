@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import { CounterNumbers } from './CounterNubres/CounterNumbers';
 import { SettingCounter } from './SettingCounter/SettingCounter';
 import './App.css';
 
-type messageForUsers = 'enter value and press set' | 'incorrect value'
+
 
 function App() {
 
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState <number | string>(0);
     const [startValue, setStartValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
-    const [messageForUser, setMessageForUser]= useState(true)
-    const [isActiveSetting, setIsActiveSetting]= useState(false)
+    const [error, setError] = useState<boolean>(false);
 
 
 
@@ -26,14 +25,19 @@ function App() {
     }
 
 
+
     useEffect(()=> {
         let newMaxValue =  localStorage.getItem('maxValue')
         let newStartValue =  localStorage.getItem('startValue')
+        let newValue = localStorage.getItem('value')
             if(newMaxValue){
             setMaxValue(JSON.parse(newMaxValue))
             }
             if(newStartValue){
             setStartValue(JSON.parse(newStartValue))
+            }
+            if(newValue){
+                setValue(JSON.parse(newValue))
             }
     },[])
 
@@ -41,29 +45,40 @@ function App() {
     /// change numbers
     const settingValue = () => {
         setValue(startValue)
-        setIsActiveSetting(true)
+        localStorage.setItem('value', JSON.stringify(startValue))
     };
 
     const changeNumberInCounter = () => {
         if (value < maxValue) {
-            setValue(value + 1);
+            setValue(+value + 1);
+
         }
     };
-    const resetNumberInCounter = () => { setValue(startValue)};
-//
+    const resetNumberInCounter = () => {
+        setValue(startValue)
+    };
 
-    useEffect(()=>{
-        if (maxValue <= startValue || startValue < 0){
-            console.log("mistake")
-            setMessageForUser(false)
-            setIsActiveSetting(false)
-        }else{
-            setMessageForUser(true)
-            setIsActiveSetting(false)
-            console.log("ok")
+    const callback = (value: number, inputName: 'max' | 'start') => {
+        if (!validate(value, inputName)) {
+            setValue('incorrect value')
+            setError(true)
+
+        } else {
+            setValue('Enter values and press set')
+            setError(false)
+
         }
-    }, [maxValue,startValue])
+    }
 
+    const validate = (value: number, inputName: 'max' | 'start'): boolean => {
+        if (inputName === 'max' && value < 0) return false
+        if (inputName === 'start' && value < 0) return false
+        if (inputName === 'start' && value > maxValue) return false
+        if(inputName === 'max' && value < startValue) return false
+        if (inputName === 'start' && value === maxValue) return false;
+        if (inputName === 'max' && value === startValue) return false;
+        else return true
+    }
 
     return (
         <div className="App">
@@ -73,9 +88,8 @@ function App() {
                 resetNumberInCounter={resetNumberInCounter}
                 maxValue={maxValue}
                 startValue={startValue}
-                messageForUser={messageForUser}
-                setMessageForUser={setMessageForUser}
-                isActiveSetting={isActiveSetting}
+                error={error}
+
             />
             <SettingCounter
                 setStartValue={onSetStartValue}
@@ -83,6 +97,7 @@ function App() {
                 startValue={startValue}
                 maxValue={maxValue}
                 settingValue={settingValue}
+                callback={callback}
 
             />
         </div>

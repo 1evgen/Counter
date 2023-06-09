@@ -1,14 +1,16 @@
 
 import s from './SupperInput.module.css'
 import React, {ChangeEvent, useState} from "react";
-import {finished} from "stream";
+
 
 type typeForSupperInput = {
     titleInput: string
-    value: number
-    setValue: (value:number)=>void
+    value: number | string
+    setValue: (value:any)=>void
     maxValue: number
     startValue: number
+    callback?: (value: number, inputName: 'max' | 'start') => void
+    name: 'max' | 'start'
 }
 
 
@@ -16,8 +18,9 @@ export const SupperInput = (props: typeForSupperInput) => {
     const isError = props.value < 0
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>)=> {
-        props.setValue(Number(e.currentTarget.value))
-
+        const value = e.currentTarget.value
+         props.setValue(Number(value))
+        props.callback?.(+value, props.name)
 
     }
 
@@ -30,6 +33,7 @@ export const SupperInput = (props: typeForSupperInput) => {
                     type={"number"}
                     onChange={onChangeHandler}
                     value={props.value}
+                   name={props.name}
 
             />
         </div>

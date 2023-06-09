@@ -10,8 +10,7 @@ type typeSetting = {
     startValue: number
     maxValue: number
     settingValue: () => void
-
-
+    callback: (value: number, inputName: 'max' | 'start') => void
 }
 
 
@@ -29,7 +28,8 @@ export const SettingCounter = (props: typeSetting) => {
                                  setValue={props.setMaxValue}
                                  maxValue={props.maxValue}// refactor
                                  startValue={props.startValue}//refactor
-
+                                 callback={props.callback}
+                                 name='max'
                     />
 
                     <SupperInput titleInput={"Start value:"}
@@ -37,6 +37,8 @@ export const SettingCounter = (props: typeSetting) => {
                                  setValue={props.setStartValue}
                                  maxValue={props.maxValue}   //refactor
                                  startValue={props.startValue} //refactor
+                        callback={props.callback}
+                                 name='start'
 
                     />
                 </div>

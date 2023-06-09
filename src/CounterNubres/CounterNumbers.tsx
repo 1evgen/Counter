@@ -1,38 +1,35 @@
-import {useEffect, useState} from "react";
+
 import s from './CounterNumbers.module.css'
 import {CounterButton} from "./CounterButton/CounterButtons";
 
 
 type typeCounterNumbers = {
-    value: number
+    value: number | string
     maxValue: number
     startValue: number
     changeNumberInCounter: ()=> void
     resetNumberInCounter: ()=> void
-    messageForUser: boolean
-    setMessageForUser: (messageForUser:boolean)=> void
-    isActiveSetting: boolean
+    error: boolean
+
 }
 
 export const CounterNumbers = (props: typeCounterNumbers) => {
 
-    const okMessage = 'Enter values and press set '
-    const isNotOKMessage = 'incorrect value'
 
     return (
         <div className={s.wrapper}>
 
             <div className={s.bodyCounter}>
                 <div className={s.windowCounter}>
-                    {props.isActiveSetting ? (
-                        <div className={`${s.number} ${props.value === props.maxValue ? s.maxValue : ''}`}>
-                            {props.value}
-                        </div>
-                    ) : (
-                        <div className={`${s.string} ${isNotOKMessage && !props.messageForUser  ? s.isMistakeInEnter : ''}`}>
-                            {props.messageForUser ? okMessage : isNotOKMessage}
-                        </div>
-                    )}
+                    {
+                       typeof props.value === "string"  ?
+                            <div className={`${s.string}  ${props.error ? s.isMistakeInEnter : ''}`}>{props.value}</div>
+                           :
+                            <div className={`${s.number} ${props.value === props.maxValue ? s.maxValue : ''}`}>
+                                {props.value}
+                            </div>
+                    }
+
                 </div>
 
 

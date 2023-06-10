@@ -1,5 +1,6 @@
 
 import s from './CounterButtons.module.css'
+import React from "react";
 
 
 type typeForButton = {
@@ -11,7 +12,7 @@ type typeForButton = {
 }
 
 
- export const  CounterButton =(props: typeForButton)=> {
+ export const  CounterButton = React.memo( (props: typeForButton)=> {
      const blockButtonInc = props.titleButton === 'inc' && props.value === props.maxValue
      const blockButtonReset = props.titleButton === 'reset' && props.value === 0
      const settingInError = props.maxValue <= props.startValue || props.startValue < 0 || props.maxValue < 0
@@ -25,4 +26,4 @@ type typeForButton = {
         >{props.titleButton}</button>
 
     )
-}
+})

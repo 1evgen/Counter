@@ -1,6 +1,7 @@
 
 import s from './CounterNumbers.module.css'
 import {CounterButton} from "./CounterButton/CounterButtons";
+import React from "react";
 
 
 type typeCounterNumbers = {
@@ -13,12 +14,10 @@ type typeCounterNumbers = {
 
 }
 
-export const CounterNumbers = (props: typeCounterNumbers) => {
-
+export const CounterNumbers = React.memo( (props: typeCounterNumbers) => {
 
     return (
         <div className={s.wrapper}>
-
             <div className={s.bodyCounter}>
                 <div className={s.windowCounter}>
                     {
@@ -29,9 +28,7 @@ export const CounterNumbers = (props: typeCounterNumbers) => {
                                 {props.value}
                             </div>
                     }
-
                 </div>
-
 
                 <div className={s.spaceForButtons}>
                     <CounterButton  changeValue={props.changeNumberInCounter}
@@ -39,9 +36,7 @@ export const CounterNumbers = (props: typeCounterNumbers) => {
                                     value={props.value}
                                     maxValue={props.maxValue}
                                     startValue={props.startValue}
-
                     />
-
                     <CounterButton changeValue={props.resetNumberInCounter}
                                    titleButton={'reset'}
                                    value={props.value}
@@ -49,8 +44,7 @@ export const CounterNumbers = (props: typeCounterNumbers) => {
                                    startValue={props.startValue}
                     />
                 </div>
-
             </div>
         </div>
     )
-}
+})

@@ -12,8 +12,6 @@ function App() {
     const [maxValue, setMaxValue] = useState(0);
     const [error, setError] = useState<boolean>(false);
 
-
-
 /// Local Storage
     const onSetMaxValue = (value:number)=>{
         setMaxValue(value)
@@ -23,8 +21,6 @@ function App() {
         setStartValue(value)
         localStorage.setItem('startValue', JSON.stringify(value))
     }
-
-
 
     useEffect(()=> {
         let newMaxValue =  localStorage.getItem('maxValue')
@@ -41,7 +37,6 @@ function App() {
             }
     },[])
 
-
     /// change numbers
     const settingValue = () => {
         setValue(startValue)
@@ -51,7 +46,6 @@ function App() {
     const changeNumberInCounter = () => {
         if (value < maxValue) {
             setValue(+value + 1);
-
         }
     };
     const resetNumberInCounter = () => {

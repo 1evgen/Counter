@@ -2,6 +2,7 @@
 import s from './CounterNumbers.module.css'
 import {CounterButton} from "./CounterButton/CounterButtons";
 import React from "react";
+import {isDisabled} from "../helper/Helper";
 
 
 type typeCounterNumbers = {
@@ -15,6 +16,9 @@ type typeCounterNumbers = {
 }
 
 export const CounterNumbers = React.memo( (props: typeCounterNumbers) => {
+
+    const isIncButtonDisabled = isDisabled('inc', props.value, props.maxValue, props.startValue);
+    const isResetButtonDisabled = isDisabled('reset', props.value, props.maxValue, props.startValue);
 
     return (
         <div className={s.wrapper}>
@@ -36,12 +40,15 @@ export const CounterNumbers = React.memo( (props: typeCounterNumbers) => {
                                     value={props.value}
                                     maxValue={props.maxValue}
                                     startValue={props.startValue}
+                                    isDisabled={isIncButtonDisabled}
+
                     />
                     <CounterButton changeValue={props.resetNumberInCounter}
                                    titleButton={'reset'}
                                    value={props.value}
                                    maxValue={props.maxValue}
                                    startValue={props.startValue}
+                                   isDisabled={isResetButtonDisabled}
                     />
                 </div>
             </div>

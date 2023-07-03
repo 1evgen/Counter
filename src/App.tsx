@@ -2,6 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import { CounterNumbers } from './CounterNubres/CounterNumbers';
 import { SettingCounter } from './SettingCounter/SettingCounter';
 import './App.css';
+import {isDisabled} from "@testing-library/user-event/dist/utils";
 
 
 
@@ -85,6 +86,7 @@ function App() {
                 error={error}
 
             />
+
             <SettingCounter
                 setStartValue={onSetStartValue}
                 setMaxValue={onSetMaxValue}
@@ -92,7 +94,7 @@ function App() {
                 maxValue={maxValue}
                 settingValue={settingValue}
                 callback={callback}
-
+                value={value}
             />
         </div>
     );

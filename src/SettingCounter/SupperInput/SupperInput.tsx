@@ -10,6 +10,7 @@ type typeForSupperInput = {
     startValue: number
     callback?: (value: number, inputName: 'max' | 'start') => void
     name: 'max' | 'start'
+
 }
 
 

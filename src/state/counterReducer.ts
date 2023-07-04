@@ -8,7 +8,7 @@ export type initialStateType = {
 export const initialState: initialStateType = {
     value: 0,
     startValue: 0,
-    maxValue: 0
+    maxValue: 1
 }
 
 export type incrementValueActionType = {type: 'INCREMENT-VALUE'}
@@ -23,9 +23,13 @@ export type setStartValueActionType = {
     value: number
 }
 
+export type setValueStringActionType = {
+    type: 'SET-VALUE-TEXT',
+    value:  string | number
+}
 
 export type actionType = incrementValueActionType | resetValueActionType | startValueActionType
-                            | setMaxValueActionType | setStartValueActionType
+                            | setMaxValueActionType | setStartValueActionType | setValueStringActionType
 export const counterReducer = (state = initialState, action: actionType): initialStateType=> {
     switch (action.type) {
             case 'INCREMENT-VALUE':
@@ -38,6 +42,8 @@ export const counterReducer = (state = initialState, action: actionType): initia
             return {...state, maxValue: action.value}
         case 'SET-START-VALUE':
             return {...state, startValue: action.value}
+        case 'SET-VALUE-TEXT' :
+            return {...state, value: action.value}
         default: return state
     }
 }
@@ -48,9 +54,9 @@ export const incrementValueAC = (): incrementValueActionType => {
 export const resetValueAC = (): resetValueActionType => {
     return {type: 'RESET-VALUE'}
 }
-// export const setValueInSettingAC = (): startValueActionType => {
-//     return {type: 'SET-VALUE-IN-SETTING'}
-// }
+ export const setNewValueInCounterAC = (value: string | number): setValueStringActionType => {
+    return {type: 'SET-VALUE-TEXT', value}
+ }
 
 export const  setMaxValueAC = (value: number): setMaxValueActionType => {
     return {type: 'SET-MAX-VALUE', value}

@@ -18,14 +18,9 @@ type typeSetting = {
 
 
 export const SettingCounter = React.memo( (props: typeSetting) => {
+
     const error = props.maxValue <= props.startValue
     const isResetButtonDisabled = isDisabled('set',props.value, props.maxValue, props.startValue )
-
-
-    //
-    // const handler = (value: string) => {
-    //     dispatch()
-    // }
 
     return (
         <div className={s.wrapper}>

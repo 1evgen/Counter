@@ -46,6 +46,16 @@
     border: 2px solid red;
 }
 
-.disabled{
+@media (min-width: 360px) and (max-width: 400px) {
+    .bodySettingCounter{
+        width: 340px;
 
+    }
+    .windowForValue{
+        width: 310px;
+
+    }
+    .windowForButton{
+        width: 310px;
+    }
 }

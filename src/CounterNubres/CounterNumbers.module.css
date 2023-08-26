@@ -58,7 +58,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin: 60px auto;
     color: #6fcbfa;
 }
 
@@ -68,4 +68,36 @@
 
 .String{
     color: #af0707;
+}
+
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .bodyCounter {
+        margin: 0;
+    }
+}
+
+
+@media (min-width: 360px) and (max-width: 400px) {
+    .bodyCounter {
+        margin: 0;
+        width: 330px;
+    }
+    .windowCounter{
+        width: 300px;
+        height: 150px;
+    }
+    .spaceForButtons {
+        width: 300px;
+        height: 70px;
+    }
+    .number {
+        font-size: 65px;
+    }
+    .string{
+        font-size: 20px;
+        margin: 60px auto;
+    }
+
+
 }

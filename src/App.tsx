@@ -4,13 +4,7 @@ import { SettingCounter } from './SettingCounter/SettingCounter';
 import './App.css';
 import {isDisabled} from "@testing-library/user-event/dist/utils";
 
-
-
-
 function App() {
-
-
-
     const [value, setValue] = useState <number | string>(0);
     const [startValue, setStartValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);

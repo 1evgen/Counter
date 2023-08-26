@@ -8,3 +8,28 @@
     height: 100vh;
 
 }
+
+
+@media (min-width: 400px) and (max-width: 768px) {
+        .App {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+    .bodyCounter{
+        gap: 0
+    }
+}
+
+@media (min-width: 360px) and (max-width: 400px) {
+    .App {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+}

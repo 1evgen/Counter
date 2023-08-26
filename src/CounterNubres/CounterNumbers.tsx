@@ -16,7 +16,6 @@ type typeCounterNumbers = {
 }
 
 export const CounterNumbers = React.memo( (props: typeCounterNumbers) => {
-
     const isIncButtonDisabled = isDisabled('inc', props.value, props.maxValue, props.startValue);
     const isResetButtonDisabled = isDisabled('reset', props.value, props.maxValue, props.startValue);
 
@@ -33,7 +32,6 @@ export const CounterNumbers = React.memo( (props: typeCounterNumbers) => {
                             </div>
                     }
                 </div>
-
                 <div className={s.spaceForButtons}>
                     <CounterButton  changeValue={props.changeNumberInCounter}
                                     titleButton={'inc'}

@@ -1,43 +1,16 @@
 
-export type initialStateType = {
-    value: number | string
-    startValue: number,
-    maxValue: number
-}
-
 export const initialState: initialStateType = {
     value: 0,
     startValue: 0,
     maxValue: 1
 }
 
-export type incrementValueActionType = {type: 'INCREMENT-VALUE'}
-export type resetValueActionType = {type: 'RESET-VALUE'}
-export type startValueActionType =  {type: 'SET-VALUE-IN-SETTING'}
-export type setMaxValueActionType = {
-    type: 'SET-MAX-VALUE',
-    value: number
-}
-export type setStartValueActionType = {
-    type: 'SET-START-VALUE',
-    value: number
-}
-
-export type setValueStringActionType = {
-    type: 'SET-VALUE-TEXT',
-    value:  string | number
-}
-
-export type actionType = incrementValueActionType | resetValueActionType | startValueActionType
-                            | setMaxValueActionType | setStartValueActionType | setValueStringActionType
 export const counterReducer = (state = initialState, action: actionType): initialStateType=> {
     switch (action.type) {
             case 'INCREMENT-VALUE':
         return {...state, value: +state.value + 1}
             case 'RESET-VALUE':
         return {...state, value: state.startValue}
-            case 'SET-VALUE-IN-SETTING':
-        return {...state, startValue: state.startValue, maxValue: state.maxValue}
         case 'SET-MAX-VALUE':
             return {...state, maxValue: action.value}
         case 'SET-START-VALUE':
@@ -48,20 +21,24 @@ export const counterReducer = (state = initialState, action: actionType): initia
     }
 }
 
-export const incrementValueAC = (): incrementValueActionType => {
-    return {type: 'INCREMENT-VALUE'}
-}
-export const resetValueAC = (): resetValueActionType => {
-    return {type: 'RESET-VALUE'}
-}
- export const setNewValueInCounterAC = (value: string | number): setValueStringActionType => {
-    return {type: 'SET-VALUE-TEXT', value}
- }
+// action creators
+export const incrementValueAC = () => ({type: 'INCREMENT-VALUE'} as const)
+export const resetValueAC = () => ({type: 'RESET-VALUE'} as const )
+export const setNewValueInCounterAC = (value: string | number) => ({type: 'SET-VALUE-TEXT', value} as const )
+export const  setMaxValueAC = (value: number) => ({type: 'SET-MAX-VALUE', value} as const)
+export const  setStartValueAC = (value: number) => ({type: 'SET-START-VALUE', value} as const)
 
-export const  setMaxValueAC = (value: number): setMaxValueActionType => {
-    return {type: 'SET-MAX-VALUE', value}
+
+// types
+export type initialStateType = {
+    value: number | string
+    startValue: number,
+    maxValue: number
 }
 
-export const  setStartValueAC = (value: number): setStartValueActionType => {
-    return {type: 'SET-START-VALUE', value}
-}
+export type actionType =
+    ReturnType<typeof incrementValueAC>         |
+    ReturnType<typeof resetValueAC>             |
+    ReturnType<typeof setMaxValueAC>            |
+    ReturnType<typeof setNewValueInCounterAC>   |
+    ReturnType<typeof setStartValueAC>

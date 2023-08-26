@@ -11,17 +11,10 @@ import {
     setStartValueAC,
 } from "./state/counterReducer";
 
-
-
-
-
-
 function AppWithReducer() {
-
      const [error, setError] = useState<boolean>(false);
      const state = useSelector<AppRootStateType, initialStateType>(state => state.count)
      const dispatch = useDispatch()
-
 
 /// Local Storage
     const onSetMaxValue = (value:number)=>{
@@ -32,7 +25,6 @@ function AppWithReducer() {
             dispatch(setStartValueAC(value))
         // localStorage.setItem('startValue', JSON.stringify(value))
     }
-
     // useEffect(()=> {
     //     let newMaxValue =  localStorage.getItem('maxValue')
     //     let newStartValue =  localStorage.getItem('startValue')
@@ -86,7 +78,6 @@ function AppWithReducer() {
         if (inputName === 'max' && value === state.startValue) return false;
         else return true
     }
-
     return (
         <div className="App">
             <CounterNumbers
@@ -98,7 +89,6 @@ function AppWithReducer() {
                  error={error}
 
             />
-
             <SettingCounter
                 setStartValue={onSetStartValue}
                 setMaxValue={onSetMaxValue}
@@ -107,6 +97,7 @@ function AppWithReducer() {
                 settingValue={settingValue}
                 callback={callback}
                 value={state.value}
+
             />
         </div>
     );

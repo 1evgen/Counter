@@ -2,6 +2,9 @@
 <br> _but still dream of becoming a programmer,_</br>
 <br> _create a counter that will do it for you!"_</br>
 <br> - Steve Jobs -</br>
+       
+<img src="SteveJ.png" alt="Steve" width="90" height="70">
+                                                                                                      
 
 # Counter
 

@@ -14,7 +14,7 @@ type typeForButton = {
 
 
  export const  CounterButton = React.memo( (props: typeForButton)=> {
-
+            console.log('render CounterButton')
     return (
         <button onClick={props.changeValue}
                 className={s.styleButtons}

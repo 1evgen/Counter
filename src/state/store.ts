@@ -13,6 +13,7 @@ export type AppRootStateType = ReturnType<typeof rootReducer>
 
 
 store.subscribe(() => {
+    console.log('write in local storage')
     const stateToSave: StateToSaveType = {
         count : {
             value: store.getState().count.value,

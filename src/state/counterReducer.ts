@@ -6,13 +6,20 @@ export const initialState: initialStateType = {
 }
 
 export const counterReducer = (state = initialState, action: actionType): initialStateType=> {
+    console.log('we are in reducer')
     switch (action.type) {
-            case 'INCREMENT-VALUE':
+            case 'INCREMENT-VALUE':{
+                console.log('increment + in State store')
         return {...state, value: +state.value + 1}
-            case 'RESET-VALUE':
+            }
+            case 'RESET-VALUE': {
+                console.log('clear number in State store')
         return {...state, value: state.startValue}
-        case 'SET-MAX-VALUE':
+            }
+        case 'SET-MAX-VALUE': {
+            console.log('we check max value')
             return {...state, maxValue: action.value}
+        }
         case 'SET-START-VALUE':
             return {...state, startValue: action.value}
         case 'SET-VALUE-TEXT' :
@@ -35,7 +42,6 @@ export type initialStateType = {
     startValue: number,
     maxValue: number
 }
-
 export type actionType =
     ReturnType<typeof incrementValueAC>         |
     ReturnType<typeof resetValueAC>             |

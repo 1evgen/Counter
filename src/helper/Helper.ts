@@ -5,7 +5,7 @@ export const isDisabled = (titleButton: titleButtonType, value: number | string,
     if(titleButton === 'inc') {
         return value === maxValue
     } else if(titleButton === 'set'){
-        return maxValue <= startValue
+        return maxValue <= startValue || startValue < 0
     } else {
         return value === startValue;
     }

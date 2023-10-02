@@ -16,7 +16,7 @@ type typeForSupperInput = {
 
 export const SupperInput = React.memo( (props: typeForSupperInput) => {
     const isError = props.value < 0
-
+    console.log('render component supper input')
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value
         props.setValue(Number(value))

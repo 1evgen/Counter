@@ -12,20 +12,22 @@ import {
 } from "./state/counterReducer";
 
 function AppWithReducer() {
+    console.log('render App')
     const [error, setError] = useState<boolean>(false);
     const state = useSelector<AppRootStateType, initialStateType>(state => state.count)
     const dispatch = useDispatch()
 
-
     const onSetMaxValue = (value: number) => {
+        console.log('set max value')
         dispatch(setMaxValueAC(value))
     }
     const onSetStartValue = (value: number) => {
+        console.log('set start value')
         dispatch(setStartValueAC(value))
     }
-
     /// change numbers
     const settingValue = () => {
+        console.log('change value in settings')
         dispatch(setStartValueAC(state.startValue))
         dispatch(setNewValueInCounterAC(state.startValue))
     };
@@ -38,7 +40,6 @@ function AppWithReducer() {
     const resetNumberInCounter = () => {
         dispatch(resetValueAC())
     };
-
     const callback = (value: number, inputName: 'max' | 'start') => {
         if (!validate(value, inputName)) {
             dispatch(setNewValueInCounterAC('incorrect value'))

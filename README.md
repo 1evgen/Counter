@@ -1,3 +1,8 @@
+<br> _"If you can't count to ten_</br>
+<br> _but still dream of becoming a programmer,_</br>
+<br> _create a counter that will do it for you!"_</br>
+<br> - Steve Jobs -</br>
+
 # Counter
 
 ![Project Example](counterG.gif)

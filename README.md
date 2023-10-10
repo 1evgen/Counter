@@ -41,4 +41,4 @@ To install and run the project locally, follow these steps:
 2. In the terminal, navigate to the project folder.
 3. Install dependencies using the following command:
 4. Start the project with the command: yarn start
-5. The deployed project can be found at the following link: ...
+
